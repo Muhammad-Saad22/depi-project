@@ -11,7 +11,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker build -t muhammad-saad22/nginx-lab:$BUILD_NUMBER .'
+                sh 'docker build -t mohamedsaad96/nginx-lab:$BUILD_NUMBER .'
             }
         }
 
@@ -19,7 +19,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     sh 'echo $PASS | docker login -u $USER --password-stdin'
-                    sh 'docker push muhammad-saad22/nginx-lab:$BUILD_NUMBER'
+                    sh 'docker push mohamedsaad96/nginx-lab:$BUILD_NUMBER'
                 }
             }
         }
